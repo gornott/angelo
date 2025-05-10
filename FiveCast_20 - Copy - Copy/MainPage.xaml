@@ -1,0 +1,32 @@
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FiveCast.MainPage"
+             Title="Travel Destination Tracker">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Button Text="New Destination" Clicked="OnNewClicked" />
+        
+
+        <CollectionView x:Name="DestinationsView" ItemsSource="{Binding Destinations}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" Padding="10" Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Country}" FontAttributes="Bold" />
+                            <Label Text="{Binding City}" />
+                            <Label Text="{Binding StartDate, StringFormat='Start: {0:dd MMM yyyy}'}" />
+                            <Label Text="{Binding EndDate, StringFormat='End: {0:dd MMM yyyy}'}" />
+                            <Label Text="{Binding Purpose}" />
+                            <Label Text="{Binding Status}" FontAttributes="Italic" />
+
+                            <HorizontalStackLayout>
+                                <Button Text="Edit" Clicked="OnEditClicked" />
+                                <Button Text="Delete" Clicked="OnDeleteClicked" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

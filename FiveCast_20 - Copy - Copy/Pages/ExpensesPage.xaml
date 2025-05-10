@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FiveCastFinal.ExpensesPage"
+             Title="Expenses">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <CollectionView x:Name="ExpensesListView" ItemsSource="{Binding Expenses}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" Padding="10" Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Type}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Amount, StringFormat='Amount: {0:C}'}"/>
+                            <Button Text="Delete" Clicked="OnDeleteExpenseClicked" BackgroundColor="Red" TextColor="White"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Entry x:Name="TypeEntry" Placeholder="Expense Type"/>
+        <Entry x:Name="AmountEntry" Placeholder="Amount" Keyboard="Numeric"/>
+        <Button Text="Add Expense" Clicked="OnAddExpenseClicked" />
+    </VerticalStackLayout>
+</ContentPage>
