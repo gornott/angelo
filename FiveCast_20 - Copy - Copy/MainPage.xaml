@@ -12,14 +12,31 @@
                 <DataTemplate>
                     <Frame BorderColor="Gray" Padding="10" Margin="5">
                         <VerticalStackLayout>
-                            <Label Text="{Binding Country}" FontAttributes="Bold" />
-                            <Label Text="{Binding City}" />
-                            <Label Text="{Binding StartDate, StringFormat='Start: {0:dd MMM yyyy}'}" />
-                            <Label Text="{Binding EndDate, StringFormat='End: {0:dd MMM yyyy}'}" />
-                            <Label Text="{Binding Purpose}" />
-                            <Label Text="{Binding Status}" FontAttributes="Italic" />
-
-                            <HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="Country: " FontAttributes="Bold" />
+                                <Label Text="{Binding Country}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="City: " FontAttributes="Bold" />
+                                <Label Text="{Binding City}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="Start: " FontAttributes="Bold" />
+                                <Label Text="{Binding StartDate, StringFormat='{0:dd MMM yyyy}'}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="End: " FontAttributes="Bold" />
+                                <Label Text="{Binding EndDate, StringFormat='{0:dd MMM yyyy}'}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="Purpose: " FontAttributes="Bold" />
+                                <Label Text="{Binding Purpose}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
+                                <Label Text="Status: " FontAttributes="Bold" />
+                                <Label Text="{Binding Status}" FontAttributes="Italic" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="5">
                                 <Button Text="Edit" Clicked="OnEditClicked" />
                                 <Button Text="Delete" Clicked="OnDeleteClicked" />
                             </HorizontalStackLayout>

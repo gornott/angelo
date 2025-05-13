@@ -16,6 +16,7 @@ namespace FiveCast.Services
             var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "destinations.db3");
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<Destination>().Wait();
+            _database.CreateTableAsync<Expense>().Wait();
         }
 
         public Task<List<Destination>> GetDestinationsAsync() =>

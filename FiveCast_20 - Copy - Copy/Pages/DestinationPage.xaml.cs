@@ -15,7 +15,7 @@ namespace FiveCast.Pages
         public DestinationPage(DatabaseService database, Destination destination = null)
         {
             InitializeComponent();
-            ExpensesButton.Clicked += OnExpensesClicked;
+            // ExpensesButton.Clicked += OnExpensesClicked;
             _database = database;
 
             Destination = destination ?? new Destination
