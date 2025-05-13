@@ -42,16 +42,10 @@ namespace FiveCast.Pages
 
         private async void OnExpensesClicked(object sender, EventArgs e)
         {
-            try
-            {
+
                 if (Destination != null)
-                    await Navigation.PushAsync(new ExpensesPage(_database, Destination.Id));
-            }
-            catch (Exception ex)
-            {
-                
-            }
-            
+                    await Shell.Current.GoToAsync($"expenses?destinationId={Destination.Id}");
+                    // await Navigation.PushAsync(new ExpensesPage(_database, Destination.Id));
         }
     }
 }

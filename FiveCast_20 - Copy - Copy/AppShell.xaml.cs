@@ -1,3 +1,5 @@
+using FiveCast.Pages;
+
 namespace FiveCast
 {
     public partial class AppShell : Shell
@@ -10,6 +12,7 @@ namespace FiveCast
                 Title = "FiveCast",
                 Content = mainPage
             });
+            Routing.RegisterRoute("expenses", typeof(ExpensesPage));
         }
     }
 }

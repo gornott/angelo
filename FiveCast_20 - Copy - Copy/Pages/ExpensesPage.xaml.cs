@@ -1,36 +1,46 @@
 using System.Collections.ObjectModel;
 using FiveCast.Model;
+using FiveCast.Services;
 
 namespace FiveCast.Pages
 {
+    [QueryProperty(nameof(DestinationId), "destinationId")]
     public partial class ExpensesPage : ContentPage
     {
-        private readonly Services.DatabaseService _db;
-        private readonly int _destinationId;
+        private readonly DatabaseService _db;
+
+        public int DestinationId { get; set; }
         public ObservableCollection<Expense> Expenses { get; set; } = new();
 
-        public ExpensesPage(Services.DatabaseService db, int destinationId)
+        public ExpensesPage()
         {
             InitializeComponent();
-            _db = db;
-            _destinationId = destinationId;
+            _db = MauiProgram.ServiceProvider.GetRequiredService<DatabaseService>();
             BindingContext = this;
         }
 
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            var list = await _db.GetExpensesAsync(_destinationId);
-            Expenses.Clear();
-            foreach (var e in list)
-                Expenses.Add(e);
+
+            try
+            {
+                var list = await _db.GetExpensesAsync(DestinationId);
+                Expenses.Clear();
+                foreach (var e in list)
+                    Expenses.Add(e);
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", ex.Message, "OK");
+            }
         }
 
         private async void OnAddExpenseClicked(object sender, EventArgs e)
         {
             if (double.TryParse(AmountEntry.Text, out double amount) && !string.IsNullOrWhiteSpace(TypeEntry.Text))
             {
-                var expense = new Expense { DestinationId = _destinationId, Type = TypeEntry.Text, Amount = amount };
+                var expense = new Expense { DestinationId = DestinationId, Type = TypeEntry.Text, Amount = amount };
                 await _db.SaveExpenseAsync(expense);
                 Expenses.Add(expense);
                 TypeEntry.Text = string.Empty;

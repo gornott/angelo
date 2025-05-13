@@ -6,6 +6,7 @@ namespace FiveCast
 {
     public static class MauiProgram
     {
+        public static IServiceProvider ServiceProvider { get; private set; }
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
@@ -26,9 +27,10 @@ namespace FiveCast
 
 #if DEBUG
     		builder.Logging.AddDebug();
-#endif
-
-            return builder.Build();
+#endif      
+            var app = builder.Build();
+            ServiceProvider = app.Services;
+            return app;
         }
     }
 }
