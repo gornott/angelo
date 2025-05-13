@@ -3,7 +3,6 @@ using System;
 using Microsoft.Maui.Controls;
 using FiveCast.Model;
 using FiveCast.Services;
-using FiveCastFinal;
 
 namespace FiveCast.Pages
 {
@@ -11,6 +10,7 @@ namespace FiveCast.Pages
     {
         public Destination Destination { get; set; }
         private readonly DatabaseService _database;
+        public List<string> CityNames => CityList.Names.OrderBy(name => name).ToList();
 
         public DestinationPage(DatabaseService database, Destination destination = null)
         {
@@ -24,8 +24,9 @@ namespace FiveCast.Pages
                 Duration = 1,
                 Status = "draft"
             };
-
+            
             BindingContext = this;
+            
         }
 
         private async void OnSaveClicked(object sender, EventArgs e)
@@ -41,10 +42,17 @@ namespace FiveCast.Pages
 
         private async void OnExpensesClicked(object sender, EventArgs e)
         {
-            if (Destination != null)
-                await Navigation.PushAsync(new ExpensesPage(_database, Destination.Id));
+            try
+            {
+                if (Destination != null)
+                    await Navigation.PushAsync(new ExpensesPage(_database, Destination.Id));
+            }
+            catch (Exception ex)
+            {
+                
+            }
+            
         }
-
     }
 }
 

@@ -1,7 +1,5 @@
 
-using System;
-
-namespace FiveCastFinal.Model
+namespace FiveCast.Model
 {
     public class Expense
     {

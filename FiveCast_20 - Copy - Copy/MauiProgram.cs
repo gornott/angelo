@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FiveCast.Pages;
+using Microsoft.Extensions.Logging;
 using FiveCast.Services;
 
 namespace FiveCast
@@ -19,9 +20,8 @@ namespace FiveCast
             // Register services
             builder.Services.AddSingleton<DatabaseService>();
             builder.Services.AddTransient<MainPage>();
-            builder.Services.AddTransient<AppShell>();
-            builder.Services.AddSingleton<DatabaseService>();
-            builder.Services.AddTransient<MainPage>();
+            builder.Services.AddTransient<DestinationPage>();
+            builder.Services.AddTransient<ExpensesPage>();
             builder.Services.AddTransient<AppShell>();
 
 #if DEBUG

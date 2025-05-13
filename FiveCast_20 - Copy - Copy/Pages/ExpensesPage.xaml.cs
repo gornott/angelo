@@ -1,18 +1,15 @@
-using Microsoft.Maui.Controls;
 using System.Collections.ObjectModel;
-using System;
-using System.Threading.Tasks;
-using FiveCastFinal.Model;
+using FiveCast.Model;
 
-namespace FiveCastFinal
+namespace FiveCast.Pages
 {
     public partial class ExpensesPage : ContentPage
     {
-        private readonly FiveCast.Services.DatabaseService _db;
+        private readonly Services.DatabaseService _db;
         private readonly int _destinationId;
         public ObservableCollection<Expense> Expenses { get; set; } = new();
 
-        public ExpensesPage(FiveCast.Services.DatabaseService db, int destinationId)
+        public ExpensesPage(Services.DatabaseService db, int destinationId)
         {
             InitializeComponent();
             _db = db;

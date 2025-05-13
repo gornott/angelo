@@ -1,6 +1,3 @@
-using System;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace FiveCast
 {
     public partial class App : Application

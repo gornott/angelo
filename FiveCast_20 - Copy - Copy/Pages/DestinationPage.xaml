@@ -5,10 +5,16 @@
              Title="Destination Details">
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
+            <Label Text="Country:" FontAttributes="Bold"/>
             <Entry Placeholder="Country" Text="{Binding Destination.Country}" />
-            <Entry Placeholder="City" Text="{Binding Destination.City}"/>
+            <Label Text="City:" FontAttributes="Bold"/>
+            <Picker ItemsSource="{Binding CityNames}"
+                    SelectedItem="{Binding Destination.City}"/>
+            <Label Text="Start Date:" FontAttributes="Bold"/>
             <DatePicker Date="{Binding Destination.StartDate}" />
+            <Label Text="Duration (days):" FontAttributes="Bold"/>
             <Entry Placeholder="Duration (days)" Keyboard="Numeric" Text="{Binding Destination.Duration}" />
+            <Label Text="Purpose of trip:" FontAttributes="Bold"/>
             <Editor Placeholder="Purpose of trip" AutoSize="TextChanges" Text="{Binding Destination.Purpose}" />
 
             <Label Text="Status:" FontAttributes="Bold"/>
