@@ -2,7 +2,7 @@
 
 namespace FiveCast.Model
 {
-    internal class ForecastData
+    public class ForecastData
     {
         public Data data { get; }
         public Request[] request { get; }

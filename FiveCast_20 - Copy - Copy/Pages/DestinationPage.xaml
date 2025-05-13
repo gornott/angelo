@@ -1,4 +1,3 @@
-
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FiveCast.Pages.DestinationPage"
@@ -6,19 +5,26 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="10">
             <Label Text="Country:" FontAttributes="Bold"/>
-            <Entry Placeholder="Country" Text="{Binding Destination.Country}" />
+            <Label Text="Bulgaria" FontAttributes="Bold"/>
+
             <Label Text="City:" FontAttributes="Bold"/>
             <Picker ItemsSource="{Binding CityNames}"
-                    SelectedItem="{Binding Destination.City}"/>
+                    SelectedItem="{Binding Destination.City}" />
+
             <Label Text="Start Date:" FontAttributes="Bold"/>
             <DatePicker Date="{Binding Destination.StartDate}" />
+
             <Label Text="Duration (days):" FontAttributes="Bold"/>
             <Entry Placeholder="Duration (days)" Keyboard="Numeric" Text="{Binding Destination.Duration}" />
+
             <Label Text="Purpose of trip:" FontAttributes="Bold"/>
             <Editor Placeholder="Purpose of trip" AutoSize="TextChanges" Text="{Binding Destination.Purpose}" />
 
             <Label Text="Status:" FontAttributes="Bold"/>
             <Label Text="{Binding Destination.Status}" />
+
+            <Button Text="Get Weather" Clicked="OnGetWeatherClicked" />
+            <Label x:Name="WeatherResultLabel" FontAttributes="Italic" TextColor="Blue" />
 
             <Button Text="Save" Clicked="OnSaveClicked" />
             <Button Text="Cancel" Clicked="OnCancelClicked" />

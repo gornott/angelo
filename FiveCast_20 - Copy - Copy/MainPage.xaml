@@ -38,7 +38,12 @@
                             </HorizontalStackLayout>
                             <HorizontalStackLayout Spacing="5">
                                 <Button Text="Edit" Clicked="OnEditClicked" />
-                                <Button Text="Delete" Clicked="OnDeleteClicked" />
+                                <Button Text="Delete" Clicked="OnDeleteClicked" BackgroundColor="Red" TextColor="White"/>
+                                
+                                <Button Text="Active" Clicked="OnActiveClicked" IsVisible="{Binding ShowActivateButton}"
+                                        BackgroundColor="Green" TextColor="White"/>
+                                <Button Text="Complete" Clicked="OnCompleteClicked" IsVisible="{Binding ShowCompleteButton}"
+                                        BackgroundColor="#A084FC" TextColor="White"/>
                             </HorizontalStackLayout>
                         </VerticalStackLayout>
                     </Frame>

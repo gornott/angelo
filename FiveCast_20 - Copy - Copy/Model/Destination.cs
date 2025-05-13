@@ -5,6 +5,10 @@ namespace FiveCast.Model
 {
     public class Destination : INotifyPropertyChanged
     {
+        
+        public bool ShowActivateButton => Status != "Active" && Status != "Complete";
+        public bool ShowCompleteButton => Status != "Complete";
+        
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
