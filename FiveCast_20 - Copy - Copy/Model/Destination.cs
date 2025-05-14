@@ -23,7 +23,10 @@ namespace FiveCast.Model
         public string City
         {
             get => city;
-            set { city = value; OnPropertyChanged(nameof(City)); }
+            set
+            {   
+                city = value; OnPropertyChanged(nameof(City));
+            }
         }
 
         private DateTime startDate;

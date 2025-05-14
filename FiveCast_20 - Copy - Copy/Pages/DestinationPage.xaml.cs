@@ -32,6 +32,11 @@ namespace FiveCast.Pages
 
         private async void OnSaveClicked(object sender, EventArgs e)
         {
+            if (Destination.City == null)
+            {
+                DisplayAlert("Error", "Please select a city", "OK");
+                return;
+            }
             await _database.SaveDestinationAsync(Destination);
             await Navigation.PopAsync();
         }
@@ -45,7 +50,7 @@ namespace FiveCast.Pages
         {
             try
             {
-                if (Destination != null)
+                if (Destination != null && Destination.City != null && Destination.Country != null)
                     await Navigation.PushAsync(new ExpensesPage(_database, Destination.Id));
             }
             catch (Exception ex)
